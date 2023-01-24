@@ -8,7 +8,7 @@ export default function App() {
         <Text size="xl" weight={500}>
           Welcome to Mantine!
         </Text>
-        <Button>Click the button</Button>
+       <Button component="a" href="https://mantine.dev" target="_blank">
       </Stack>
     </ThemeProvider>
   );
