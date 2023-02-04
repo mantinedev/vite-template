@@ -1,5 +1,5 @@
-import { Text, Button, Stack } from "@mantine/core";
-import { ThemeProvider } from "./ThemeProvider";
+import { Text, Button, Stack } from '@mantine/core';
+import { ThemeProvider } from './ThemeProvider';
 
 export default function App() {
   return (
