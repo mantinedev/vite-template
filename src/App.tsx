@@ -1,15 +1,10 @@
-import { Text, Button, Stack } from '@mantine/core';
 import { ThemeProvider } from './ThemeProvider';
+import { Welcome } from './Welcome/Welcome';
 
 export default function App() {
   return (
     <ThemeProvider>
-      <Stack align="center" mt={50}>
-        <Text size="xl" weight={500}>
-          Welcome to Mantine!
-        </Text>
-        <Button>Click the button</Button>
-      </Stack>
+      <Welcome />
     </ThemeProvider>
   );
 }
