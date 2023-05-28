@@ -4,6 +4,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
     '^@test-utils': '<rootDir>/test-utils',
+    '\\.css$': 'identity-obj-proxy',
   },
   transform: {
     '^.+\\.ts?$': 'ts-jest',

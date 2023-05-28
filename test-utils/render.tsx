@@ -1,11 +1,11 @@
 import { render as testingLibraryRender } from '@testing-library/react';
-import { ThemeProvider } from '../src/ThemeProvider';
+import { MantineProvider } from '@mantine/core';
+import { theme } from '../src/theme';
 
-export function render(children: React.ReactNode) {
-  const { rerender, ...others } = testingLibraryRender(<ThemeProvider>{children}</ThemeProvider>);
-  return {
-    rerender: (ui: React.ReactElement<any, string | React.JSXElementConstructor<any>>) =>
-      rerender(<ThemeProvider>{ui}</ThemeProvider>),
-    ...others,
-  };
+export function render(ui: React.ReactNode) {
+  return testingLibraryRender(<>{ui}</>, {
+    wrapper: ({ children }: { children: React.ReactNode }) => (
+      <MantineProvider theme={theme}>{children}</MantineProvider>
+    ),
+  });
 }
