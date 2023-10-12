@@ -4,6 +4,14 @@
   font-weight: 900;
   letter-spacing: rem(-2px);
 
+  @include light {
+    background-color: red;
+  }
+
+  @include dark {
+    background-color: blue;
+  }
+
   @media (max-width: $mantine-breakpoint-md) {
     font-size: rem(50px);
   }
