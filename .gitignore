@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/cache
+.pnp.cjs
+.pnp.js
+.pnp.module.js
+.pnp.data.json
