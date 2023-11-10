@@ -7899,10 +7899,10 @@ postcss-nested@^6.0.1:
   dependencies:
     postcss-selector-parser "^6.0.11"
 
-postcss-preset-mantine@1.9.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/postcss-preset-mantine/-/postcss-preset-mantine-1.9.0.tgz#d870f97888c34dd69c084ee7b89da5b04b99c557"
-  integrity sha512-ZurmjL+5UK9FZq4GGKOoksC7UMVFZVXxRMO0WwQAiMeElZ8jPXIXIALnwdQhslyoVDzpezkRuHYtXGo65DwvqA==
+postcss-preset-mantine@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/postcss-preset-mantine/-/postcss-preset-mantine-1.10.0.tgz#fddeb3c700db343ddfb9611996f0a4f5c884b8d4"
+  integrity sha512-pXe8iExVBzleZTp2VBPwdyJC+l00/cmhbuda6In5O22LL9/KPi57NF8sYgHCsd2u6Tv8AVHoz1rmd8W0GrmESg==
   dependencies:
     postcss-mixins "^9.0.4"
     postcss-nested "^6.0.1"
