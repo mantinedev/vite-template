@@ -1,10 +1,20 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { HomePage } from './pages/Home.page';
+import { HomePage } from './pages/Homepage';
+import { AboutPage } from './pages/Aboutpage';
+import { BasicAppShell } from './components/BasicAppShell';
+import { KadaverPage } from './pages/Kadaverpage';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage />,
+    element: <BasicAppShell />,
+    children: [
+      { path: '/', element: <HomePage /> },
+      { path: '/home', element: <HomePage /> },
+      { path: '/about', element: <AboutPage /> },
+      { path: '/kadaver', element: <KadaverPage /> },
+      { path: '/*', element: <HomePage /> },
+    ],
   },
 ]);
 
