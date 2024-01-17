@@ -1,6 +1,6 @@
 import { Container, Text, Title, useMantineTheme } from '@mantine/core';
 
-export function KadaverPage() {
+export default function KadaverPage() {
   const theme = useMantineTheme();
   return (
     <Container p="md" bg={theme.colors.orange[9]}>

@@ -19,11 +19,14 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
+    "@kinde-oss/kinde-auth-react": "^3.0.23",
     "@mantine/core": "7.4.0",
     "@mantine/hooks": "7.4.0",
+    "autoprefixer": "^10.4.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.21.0"
+    "react-router-dom": "^6.21.0",
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.6",
@@ -52,7 +55,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^23.0.1",
-    "postcss": "^8.4.32",
+    "postcss": "^8.4.33",
     "postcss-preset-mantine": "1.12.3",
     "postcss-simple-vars": "^7.0.1",
     "prettier": "^3.1.1",

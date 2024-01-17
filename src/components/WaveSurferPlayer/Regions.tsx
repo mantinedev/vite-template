@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import WaveSurfer from 'wavesurfer.js';
+import WaveSurfer from 'wavesurfer.tsx';
 import RegionsPlugin, { Region } from 'wavesurfer.js/dist/plugins/regions';
 import { Button, Group, useMantineTheme, Stack } from '@mantine/core';
 

@@ -1,0 +1,8 @@
+@import "@mantine/core/styles.css";
+@tailwind components;
+@tailwind utilities;
+
+@layer tailwind {
+    @tailwind base;
+}
+

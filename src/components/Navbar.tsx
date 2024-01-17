@@ -12,6 +12,7 @@ export function Navbar() {
     { name: 'Home', path: '/home' },
     { name: 'About', path: '/about' },
     { name: 'Kadaver', path: '/kadaver' },
+    { name: 'Log out', path: '/logout' },
   ];
 
   const onClickNavLink = (name: string) => {

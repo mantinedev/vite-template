@@ -1,12 +1,16 @@
-import { Container } from '@mantine/core';
-import { Welcome } from '../components/Welcome/Welcome';
-import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
+import { Container, useMantineColorScheme } from '@mantine/core';
+import { Welcome } from '@/components/Welcome/Welcome';
+import React from 'react';
 
-export function HomePage() {
+export default function HomePage() {
+  const { setColorScheme } = useMantineColorScheme();
+  React.useEffect(() => {
+    setColorScheme('dark');
+  }, []);
+
   return (
     <Container p="md">
       <Welcome />
-      <ColorSchemeToggle />
     </Container>
   );
 }
