@@ -53,7 +53,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^23.0.1",
     "postcss": "^8.4.32",
-    "postcss-preset-mantine": "1.12.3",
+    "postcss-preset-mantine": "1.13.0",
     "postcss-simple-vars": "^7.0.1",
     "prettier": "^3.1.1",
     "prop-types": "^15.8.1",
