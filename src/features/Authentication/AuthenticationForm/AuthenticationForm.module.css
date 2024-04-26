@@ -1,0 +1,8 @@
+.root {
+	height: max(calc(100vh - 150px), 600px);
+	padding: var(--mantine-spacing-md);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}

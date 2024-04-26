@@ -1,0 +1,10 @@
+{
+	"recommendations": [
+		"esbenp.prettier-vscode",
+		"vunguyentuan.vscode-css-variables",
+		"dbaeumer.vscode-eslint",
+		"vunguyentuan.vscode-postcss",
+		"vunguyentuan.vscode-css-variables",
+		"stylelint.vscode-stylelint"
+	]
+}
