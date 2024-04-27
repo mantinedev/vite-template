@@ -14,6 +14,7 @@ import 'mantine-react-table/styles.css'; //import MRT styles
 
 import { Router } from './Router';
 import { theme } from './theme';
+import { AuthProvider } from './providers/AuthProvider';
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -37,8 +38,10 @@ export default function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<MantineProvider theme={theme}>
-				<Router />
-				<Notifications position="bottom-right" />
+				<AuthProvider>
+					<Router />
+					<Notifications position="bottom-right" />
+				</AuthProvider>
 			</MantineProvider>
 			<ReactQueryDevtools initialIsOpen={false} />
 		</QueryClientProvider>

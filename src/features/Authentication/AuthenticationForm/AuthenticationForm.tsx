@@ -20,6 +20,8 @@ import { useNavigate } from 'react-router-dom';
 import { GoogleButton } from '@/components/MantineUi/Buttons/GoogleButton';
 import { useLoginUserMutation } from '@/hooks/http-api/auth/useLoginUserMutation';
 import { useRegisterUserMutation } from '@/hooks/http-api/auth/useRegisterUserMutation';
+import { useAuthContext } from '@/providers/AuthProvider';
+import { useMe } from '@/hooks/http-api/auth/useMe';
 
 import classes from './AuthenticationForm.module.css';
 
@@ -28,12 +30,14 @@ const TOGGLE_REGISTER_NAME = 'Register';
 
 export function AuthenticationForm() {
 	const navigate = useNavigate();
+	const { login, logout } = useAuthContext();
 
 	/**************************************
 	 * Api
 	 *************************************/
 	const { loginUserMutationResult } = useLoginUserMutation();
 	const { registerUserMutationResult } = useRegisterUserMutation();
+	const { findMeResult } = useMe();
 
 	/**************************************
 	 * Forms
@@ -71,7 +75,13 @@ export function AuthenticationForm() {
 					icon: <IconCheck />
 				});
 
-				navigate('/user/dashboard');
+				const userResponse = await findMeResult.refetch();
+				const userProfile = userResponse.data?.data;
+
+				if (!userProfile) throw new Error('User not found');
+
+				login(userProfile);
+				navigate('/user/dashboard', { replace: true });
 			} catch (error) {
 				notifications.show({
 					title: 'Error',
@@ -79,6 +89,7 @@ export function AuthenticationForm() {
 					color: 'red',
 					icon: <IconX />
 				});
+				logout();
 			}
 		} else {
 			try {

@@ -1,27 +1,32 @@
 import { AppShell, Burger, Button, Flex, NavLink as MantineNavLink, Stack, Text, Title } from '@mantine/core';
-import { useDisclosure, useLocalStorage } from '@mantine/hooks';
+import { useDisclosure } from '@mantine/hooks';
 import { IconHome2, IconUsersGroup } from '@tabler/icons-react';
 import { When } from 'react-if';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet, useMatches, useNavigate } from 'react-router-dom';
 
 import { ColorSchemeToggle } from '@/components/ColorSchemeToggle/ColorSchemeToggle';
 import { useMe } from '@/hooks/http-api/auth/useMe';
-import { SESSION_STORAGE_KEY } from '@/constants/localStorage';
+import { useAuthContext } from '@/providers/AuthProvider';
 
 import { Footer } from './Footer/Footer';
 
 export default function UserUiLayout() {
 	const [opened, { toggle }] = useDisclosure();
-	const { userProfile } = useMe();
-	const [value, setValue] = useLocalStorage({
-		key: SESSION_STORAGE_KEY,
-		defaultValue: false
-	});
 	const navigate = useNavigate();
+	const { logout } = useAuthContext();
+
+	const matches = useMatches();
+
+	const checkCurrentRouteActive = (path: string) => matches.some(match => match.pathname === path);
+
+	/**************************************
+	 * Api
+	 *************************************/
+	const { userProfile } = useMe();
 
 	const handleLogout = () => {
-		setValue(false);
-		navigate('/auth/login');
+		logout();
+		navigate('/auth/login', { replace: true });
 	};
 
 	return (
@@ -52,12 +57,14 @@ export default function UserUiLayout() {
 					<Title order={2}>Navigations</Title>
 					<Stack gap={1} mt="lg">
 						<MantineNavLink
+							active={checkCurrentRouteActive('/user/dashboard')}
 							component={NavLink}
 							to="/user/dashboard"
 							label="Dashboard"
 							leftSection={<IconHome2 size="1rem" stroke={1.5} />}
 						/>
 						<MantineNavLink
+							active={checkCurrentRouteActive('/user/user-management')}
 							component={NavLink}
 							to="/user/user-management"
 							label="Users Management"
