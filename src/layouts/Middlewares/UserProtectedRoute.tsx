@@ -7,8 +7,9 @@ type Props = {
 };
 
 export const UserProtectedRoute = ({ children }: Props) => {
-	const { isLoggedIn } = useAuthContext();
-	if (!isLoggedIn) {
+	const { isInitialized, isLoggedIn } = useAuthContext();
+
+	if (isInitialized && !isLoggedIn) {
 		return <Navigate to="/auth/login" replace />;
 	}
 	return children;

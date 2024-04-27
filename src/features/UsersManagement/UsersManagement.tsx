@@ -1,120 +1,133 @@
-import { ActionIcon, Button, Flex, Stack, Text, Title, Tooltip } from '@mantine/core';
-import '@mantine/core/styles.css';
-import '@mantine/dates/styles.css'; //if using mantine date picker features
+import { ActionIcon, Alert, Flex, Stack, Text, Title, Tooltip } from '@mantine/core';
 import { modals } from '@mantine/modals';
-import { IconEdit, IconTrash } from '@tabler/icons-react';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { IconCheck, IconEdit, IconTrash, IconX } from '@tabler/icons-react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
 	// createRow,
 	type MRT_ColumnDef,
+	MRT_ColumnFiltersState,
 	MRT_EditActionButtons,
 	type MRT_Row,
 	type MRT_TableOptions,
 	MantineReactTable,
 	useMantineReactTable
 } from 'mantine-react-table';
-import 'mantine-react-table/styles.css'; //make sure MRT styles were imported in your app root (once)
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-import { type User, fakeData, usStates } from './mockData';
+import { useGetUsers } from '@/hooks/http-api/user/useGetUsers';
+import useCustomPagination from '@/hooks/useCustomPagination';
+import { User } from '@/types/user';
+import { useUpdateUserMutation } from '@/hooks/http-api/user/useUpdateUserMutation';
+import { UpdateUserMutationArgs } from '@/services/http-api-service/user.api';
+
+import { validateUser } from './lib/validation-utils';
+
+const defaultPageSize = 10;
 
 export const UsersManagement = () => {
-	const [validationErrors, setValidationErrors] = useState<Record<string, string | undefined>>({});
+	/**************************************
+	 * Pagination
+	 *************************************/
+	const [totalCount, setTotalCount] = useState(0);
+	const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: defaultPageSize });
+	const paginationParams = useMemo(
+		() => ({
+			page: pagination.pageIndex + 1,
+			pageSize: pagination.pageSize
+		}),
+		[pagination]
+	);
 
+	const paginationData = useCustomPagination({
+		paginationParams,
+		totalCount
+	});
+
+	/**************************************
+	 * Filters
+	 *************************************/
+	const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([]);
+	const [globalFilter, setGlobalFilter] = useState<string | undefined>(undefined);
+
+	const isDeletedFilter = columnFilters.find(filter => filter.id === 'isDeleted')?.value as boolean | undefined;
+
+	/**************************************
+	 * Api
+	 *************************************/
+	const { getUsersResult, paginatedWrappedUser } = useGetUsers({
+		args: {
+			page: paginationData.currentPage,
+			pageSize: paginationData.limit,
+			searchUser: globalFilter,
+			isDeleted: isDeletedFilter
+		}
+	});
+
+	const { mutateAsync: updateUser, isPending: isUpdatingUser } = useUpdateUser();
+	const {
+		updateUserMutationResult: { mutateAsync: deleteUser, isPending: isDeletingUser }
+	} = useUpdateUserMutation();
+
+	/**************************************
+	 * Users data
+	 *************************************/
+	const { isError: isLoadingUsersError, isFetching: isFetchingUsers, isLoading: isLoadingUsers } = getUsersResult;
+	const fetchedUsers = paginatedWrappedUser?.items ?? [];
+	const totalCountData = paginatedWrappedUser?.totalCount ?? 0;
+
+	useEffect(() => {
+		if (totalCountData) {
+			setTotalCount(totalCountData);
+		} else {
+			setTotalCount(0);
+		}
+	}, [totalCountData]);
+
+	/**************************************
+	 * React Mantine Table
+	 *************************************/
+	const [validationErrors, setValidationErrors] = useState<Record<string, string | undefined>>({});
 	const columns = useMemo<MRT_ColumnDef<User>[]>(
 		() => [
 			{
 				accessorKey: 'id',
 				header: 'Id',
 				enableEditing: false,
-				size: 80
+				size: 80,
+				enableColumnFilter: false
 			},
 			{
-				accessorKey: 'firstName',
-				header: 'First Name',
-				mantineEditTextInputProps: {
-					type: 'email',
-					required: true,
-					error: validationErrors?.firstName,
-					//remove any previous validation errors when user focuses on the input
-					onFocus: () =>
-						setValidationErrors({
-							...validationErrors,
-							firstName: undefined
-						})
-					//optionally add validation checking for onBlur or onChange
-				}
-			},
-			{
-				accessorKey: 'lastName',
-				header: 'Last Name',
-				mantineEditTextInputProps: {
-					type: 'email',
-					required: true,
-					error: validationErrors?.lastName,
-					//remove any previous validation errors when user focuses on the input
-					onFocus: () =>
-						setValidationErrors({
-							...validationErrors,
-							lastName: undefined
-						})
-				}
+				accessorKey: 'userName',
+				header: 'User Name',
+				enableColumnFilter: false
 			},
 			{
 				accessorKey: 'email',
 				header: 'Email',
-				mantineEditTextInputProps: {
-					type: 'email',
-					required: true,
-					error: validationErrors?.email,
-					//remove any previous validation errors when user focuses on the input
-					onFocus: () =>
-						setValidationErrors({
-							...validationErrors,
-							email: undefined
-						})
-				}
+				enableColumnFilter: false
 			},
 			{
-				accessorKey: 'state',
-				header: 'State',
-				editVariant: 'select',
-				mantineEditSelectProps: {
-					data: usStates,
-					error: validationErrors?.state
-				}
+				accessorKey: 'isDeleted',
+				header: 'Is Deleted',
+				filterVariant: 'checkbox',
+				Cell: ({ cell }) => {
+					const isDeleted = cell.getValue();
+
+					if (isDeleted) {
+						return <IconCheck color="var(--mantine-color-green-2)" />;
+					}
+
+					return <IconX color="var(--mantine-color-red-6)" />;
+				},
+				enableSorting: false
 			}
 		],
 		[validationErrors]
 	);
 
-	//call CREATE hook
-	const { mutateAsync: createUser, isPending: isCreatingUser } = useCreateUser();
-	//call READ hook
-	const {
-		data: fetchedUsers = [],
-		isError: isLoadingUsersError,
-		isFetching: isFetchingUsers,
-		isLoading: isLoadingUsers
-	} = useGetUsers();
-	//call UPDATE hook
-	const { mutateAsync: updateUser, isPending: isUpdatingUser } = useUpdateUser();
-	//call DELETE hook
-	const { mutateAsync: deleteUser, isPending: isDeletingUser } = useDeleteUser();
-
-	//CREATE action
-	const handleCreateUser: MRT_TableOptions<User>['onCreatingRowSave'] = async ({ values, exitCreatingMode }) => {
-		const newValidationErrors = validateUser(values);
-		if (Object.values(newValidationErrors).some(error => error)) {
-			setValidationErrors(newValidationErrors);
-			return;
-		}
-		setValidationErrors({});
-		await createUser(values);
-		exitCreatingMode();
-	};
-
-	//UPDATE action
+	/**************************************
+	 * Actions
+	 *************************************/
 	const handleSaveUser: MRT_TableOptions<User>['onEditingRowSave'] = async ({ values, table }) => {
 		const newValidationErrors = validateUser(values);
 		if (Object.values(newValidationErrors).some(error => error)) {
@@ -126,26 +139,42 @@ export const UsersManagement = () => {
 		table.setEditingRow(null); //exit editing mode
 	};
 
-	//DELETE action
 	const openDeleteConfirmModal = (row: MRT_Row<User>) =>
 		modals.openConfirmModal({
 			title: 'Are you sure you want to delete this user?',
-			children: (
-				<Text>
-					Are you sure you want to delete {row.original.firstName} {row.original.lastName}? This action cannot be
-					undone.
-				</Text>
-			),
+			children: <Text>Are you sure you want to delete {row.original.userName}? This action cannot be undone.</Text>,
 			labels: { confirm: 'Delete', cancel: 'Cancel' },
 			confirmProps: { color: 'red' },
-			onConfirm: () => deleteUser(row.original.id)
+			onConfirm: () => {
+				const userToUpdate: Partial<User> = { ...row.original, isDeleted: true };
+				const mutationArgs: UpdateUserMutationArgs = { userId: row.original.id, user: userToUpdate };
+				deleteUser(mutationArgs);
+			}
 		});
 
 	const mantineReactTable = useMantineReactTable({
 		columns,
 		data: fetchedUsers,
-		createDisplayMode: 'modal', //default ('row', and 'custom' are also available)
-		editDisplayMode: 'modal', //default ('row', 'cell', 'table', and 'custom' are also available)
+
+		//features
+		enablePagination: true,
+		enablePinning: true,
+
+		// Mantine props
+		mantineFilterCheckboxProps: {},
+
+		// pagination props
+		paginationDisplayMode: 'pages',
+		manualPagination: true,
+		rowCount: paginationData.totalCount,
+		onPaginationChange: setPagination,
+
+		// filtering props
+		onGlobalFilterChange: setGlobalFilter,
+		manualFiltering: true,
+		onColumnFiltersChange: setColumnFilters,
+
+		editDisplayMode: 'modal',
 		enableEditing: true,
 		getRowId: row => row.id,
 		mantineToolbarAlertBannerProps: isLoadingUsersError
@@ -160,20 +189,11 @@ export const UsersManagement = () => {
 			}
 		},
 		onCreatingRowCancel: () => setValidationErrors({}),
-		onCreatingRowSave: handleCreateUser,
 		onEditingRowCancel: () => setValidationErrors({}),
 		onEditingRowSave: handleSaveUser,
-		renderCreateRowModalContent: ({ table, row, internalEditComponents }) => (
-			<Stack>
-				<Title order={3}>Create New User</Title>
-				{internalEditComponents}
-				<Flex justify="flex-end" mt="xl">
-					<MRT_EditActionButtons variant="text" table={table} row={row} />
-				</Flex>
-			</Stack>
-		),
 		renderEditRowModalContent: ({ table, row, internalEditComponents }) => (
 			<Stack>
+				<Alert color="red">This just updates locally for now, ignore this feature</Alert>
 				<Title order={3}>Edit User</Title>
 				{internalEditComponents}
 				<Flex justify="flex-end" mt="xl">
@@ -195,75 +215,36 @@ export const UsersManagement = () => {
 				</Tooltip>
 			</Flex>
 		),
-		renderTopToolbarCustomActions: ({ table }) => (
-			<Button
-				onClick={() => {
-					table.setCreatingRow(true); //simplest way to open the create row modal with no default values
-					//or you can pass in a row object to set default values with the `createRow` helper function
-					// table.setCreatingRow(
-					//   createRow(table, {
-					//     //optionally pass in default values for the new row, useful for nested data or other complex scenarios
-					//   }),
-					// );
-				}}
-			>
-				Create New User
-			</Button>
-		),
+		// renderTopToolbarCustomActions: ({ table }) => (
+		// 	<Button
+		// 		onClick={() => {
+		// 			table.setCreatingRow(true); //simplest way to open the create row modal with no default values
+		// 		}}
+		// 	>
+		// 		Create New User
+		// 	</Button>
+		// ),
+		initialState: {
+			showColumnFilters: true,
+			showGlobalFilter: true,
+			columnVisibility: {
+				id: false
+			},
+			density: 'xs'
+		},
 		state: {
 			isLoading: isLoadingUsers,
-			isSaving: isCreatingUser || isUpdatingUser || isDeletingUser,
+			isSaving: isUpdatingUser || isDeletingUser,
 			showAlertBanner: isLoadingUsersError,
-			showProgressBars: isFetchingUsers
+			showProgressBars: isFetchingUsers,
+			pagination,
+			globalFilter,
+			columnFilters
 		}
 	});
 
 	return <MantineReactTable table={mantineReactTable} />;
 };
-
-//CREATE hook (post new user to api)
-function useCreateUser() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async () => {
-			//send api update request here
-			await new Promise(resolve => {
-				setTimeout(resolve, 1000);
-			}); //fake api call
-			return Promise.resolve();
-		},
-		//client side optimistic update
-		onMutate: (newUserInfo: User) => {
-			queryClient.setQueryData(
-				['users'],
-				(prevUsers: any) =>
-					[
-						...prevUsers,
-						{
-							...newUserInfo,
-							id: (Math.random() + 1).toString(36).substring(7)
-						}
-					] as User[]
-			);
-		}
-		// onSettled: () => queryClient.invalidateQueries({ queryKey: ['users'] }), //refetch users after mutation, disabled for demo
-	});
-}
-
-//READ hook (get users from api)
-function useGetUsers() {
-	return useQuery<User[]>({
-		queryKey: ['users'],
-		queryFn: async () => {
-			//send api request here
-			await new Promise(resolve => {
-				setTimeout(resolve, 1000);
-			}); //fake api call
-			return Promise.resolve(fakeData);
-		},
-		refetchOnWindowFocus: false
-	});
-}
 
 //UPDATE hook (put user in api)
 function useUpdateUser() {
@@ -284,40 +265,4 @@ function useUpdateUser() {
 		}
 		// onSettled: () => queryClient.invalidateQueries({ queryKey: ['users'] }), //refetch users after mutation, disabled for demo
 	});
-}
-
-//DELETE hook (delete user in api)
-function useDeleteUser() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async () => {
-			//send api update request here
-			await new Promise(resolve => {
-				setTimeout(resolve, 1000);
-			}); //fake api call
-			return Promise.resolve();
-		},
-		//client side optimistic update
-		onMutate: (userId: string) => {
-			queryClient.setQueryData(['users'], (prevUsers: any) => prevUsers?.filter((user: User) => user.id !== userId));
-		}
-		// onSettled: () => queryClient.invalidateQueries({ queryKey: ['users'] }), //refetch users after mutation, disabled for demo
-	});
-}
-
-const validateRequired = (value: string) => !!value.length;
-const validateEmail = (email: string) =>
-	!!email.length &&
-	email
-		.toLowerCase()
-		.match(
-			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-		);
-
-function validateUser(user: User) {
-	return {
-		firstName: !validateRequired(user.firstName) ? 'First Name is Required' : '',
-		lastName: !validateRequired(user.lastName) ? 'Last Name is Required' : '',
-		email: !validateEmail(user.email) ? 'Incorrect Email Format' : ''
-	};
 }

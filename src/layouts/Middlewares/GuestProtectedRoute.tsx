@@ -7,8 +7,9 @@ type Props = {
 };
 
 export const GuestProtectedRoute = ({ children }: Props) => {
-	const { isLoggedIn } = useAuthContext();
-	if (isLoggedIn) {
+	const { isInitialized, isLoggedIn } = useAuthContext();
+
+	if (isInitialized && isLoggedIn) {
 		return <Navigate to="/user/dashboard" replace />;
 	}
 	return children;

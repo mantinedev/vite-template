@@ -1,11 +1,12 @@
 import { useLocalStorage } from '@mantine/hooks';
-import { createContext, useContext, useMemo } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 import { SESSION_STORAGE_KEY, USER_STORAGE_KEY } from '@/constants/localStorage';
-import { User } from '@/services/http-api-service';
 import { Maybe } from '@/types';
+import { User } from '@/types/user';
 
 type AuthContext = {
+	isInitialized: boolean;
 	user: Maybe<User>;
 	isLoggedIn: boolean;
 	login: (data: User) => void;
@@ -29,6 +30,7 @@ type Props = {
 };
 
 export const AuthProvider = ({ children }: Props) => {
+	const [isInitialized, setIsInitialized] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useLocalStorage({
 		key: SESSION_STORAGE_KEY,
 		defaultValue: false
@@ -37,6 +39,12 @@ export const AuthProvider = ({ children }: Props) => {
 	const [user, setUser] = useLocalStorage<User | null>({
 		key: USER_STORAGE_KEY
 	});
+
+	useEffect(() => {
+		if (!isInitialized) {
+			setIsInitialized(true);
+		}
+	}, []);
 
 	const login = async (data: User) => {
 		setIsLoggedIn(true);
@@ -50,6 +58,7 @@ export const AuthProvider = ({ children }: Props) => {
 
 	const value = useMemo(
 		() => ({
+			isInitialized,
 			user,
 			isLoggedIn,
 			login,

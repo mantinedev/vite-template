@@ -5,11 +5,11 @@ import { IconX } from '@tabler/icons-react';
 import { useAuthContext } from '@/providers/AuthProvider';
 import { authHttpService } from '@/services/http-api-service';
 
-type props = {
+type Props = {
 	enabled?: boolean;
 };
 
-export function useMe({ enabled = true }: props = {}) {
+export function useMe({ enabled = true }: Props = {}) {
 	const { isLoggedIn, logout } = useAuthContext();
 
 	const findMeResult = useQuery({

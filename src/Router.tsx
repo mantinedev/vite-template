@@ -12,12 +12,12 @@ import { UserProtectedRoute } from './layouts/Middlewares/UserProtectedRoute';
 
 const router = createBrowserRouter([
 	{
-		path: '/',
+		path: '',
 		element: <DefaultRoute />,
 		errorElement: <ErrorPage />
 	},
 	{
-		path: '/auth',
+		path: 'auth',
 		element: (
 			<GuestProtectedRoute>
 				<AuthUiLayout />
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
 		]
 	},
 	{
-		path: '/user',
+		path: 'user',
 		element: (
 			<UserProtectedRoute>
 				<UserUiLayout />

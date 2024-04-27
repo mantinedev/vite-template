@@ -25,6 +25,7 @@ backendAPIAxiosInstance.interceptors.response.use(
 		if (error.response.status === 401) {
 			window.localStorage.removeItem(SESSION_STORAGE_KEY);
 			window.localStorage.removeItem(USER_STORAGE_KEY);
+			window.location.reload();
 		}
 
 		return Promise.reject(error);

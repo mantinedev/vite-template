@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { RoleType, User } from '@/services/http-api-service';
+import { RoleType, User } from '@/types/user';
 
 /**
  * The role types hierarchy is defined here, going from least to most privileged.
