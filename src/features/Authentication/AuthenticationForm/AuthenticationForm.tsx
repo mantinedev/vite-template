@@ -37,7 +37,7 @@ export function AuthenticationForm() {
 	 *************************************/
 	const { loginUserMutationResult } = useLoginUserMutation();
 	const { registerUserMutationResult } = useRegisterUserMutation();
-	const { findMeResult } = useMe();
+	const { findMeResult } = useMe({ enabled: false });
 
 	/**************************************
 	 * Forms
@@ -174,7 +174,11 @@ export function AuthenticationForm() {
 						<Anchor component="button" type="button" c="dimmed" onClick={() => toggle()} size="xs">
 							{type === TOGGLE_REGISTER_NAME ? 'Already have an account? Login' : "Don't have an account? Register"}
 						</Anchor>
-						<Button type="submit" radius="xl">
+						<Button
+							type="submit"
+							radius="xl"
+							loading={registerUserMutationResult.isPending || loginUserMutationResult.isPending}
+						>
 							{upperFirst(type)}
 						</Button>
 					</Group>
