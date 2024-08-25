@@ -1,0 +1,59 @@
+.parent {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif; /* Optional: Choose your desired font */
+  }
+  
+  .wlcm {
+    text-align: left;
+    padding: 3rem;
+    margin-top:6rem;
+    border:2px solid #ebebeb;
+    border-radius:0.4rem;
+    width:35%;
+  }
+  
+  .wlcm button {
+    margin-top: 20px;
+    margin: auto;
+    padding: 0.6rem;
+    width:100%;
+    font-size: 1rem;
+    background-color:black; /* Google blue color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .wlcm p{
+    font-size:1.2rem;
+  }
+  .two i{
+    font-size:1.5rem;
+  }
+  .one p{
+    font-size:1.5rem;
+  }
+
+  @media (300px < width < 550px) {
+    .wlcm{
+      padding:2rem;
+      margin-top:7rem;
+      width:80%;
+    }
+    .wlcm h1{
+      font-size:1.3rem;
+    }
+    .wlcm button{
+      padding:0.6rem 3.5rem;
+    }
+  }
+  
+ 
