@@ -2,6 +2,7 @@
 
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
+import react from 'eslint-plugin-react';
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -63,6 +64,31 @@ export default tseslint.config(
       '@typescript-eslint/ban-ts-comment': 'off',
       '@typescript-eslint/consistent-generic-constructors': 'error',
       '@typescript-eslint/method-signature-style': ['error', 'property'],
+    },
+  },
+  {
+    // React specific rules
+    plugins: { react },
+    settings: { react: { version: 'detect' } },
+    rules: {
+      'react/button-has-type': 'error',
+      'react/display-name': 'error',
+      'react/hook-use-state': 'error',
+      'react/jsx-boolean-value': 'error',
+      'react/jsx-curly-brace-presence': ['error', 'never'],
+      'react/jsx-fragments': ['error', 'syntax'],
+      'react/jsx-key': ['error', { checkFragmentShorthand: true }],
+      'react/jsx-no-comment-textnodes': 'error',
+      'react/jsx-no-duplicate-props': 'error',
+      'react/jsx-no-target-blank': 'error',
+      'react/jsx-no-useless-fragment': 'error',
+      'react/no-children-prop': 'error',
+      'react/no-deprecated': 'error',
+      'react/no-find-dom-node': 'error',
+      'react/no-string-refs': 'error',
+      'react/no-unstable-nested-components': 'error',
+      'react/self-closing-comp': 'error',
+      'react/void-dom-elements-no-children': 'error',
     },
   }
 );

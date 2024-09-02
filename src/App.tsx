@@ -9,7 +9,10 @@ export default function App() {
   return (
     <MantineProvider theme={theme}>
       <Router />
-      <button type={'submit'}>Just a button</button>
+      <button type="button">Just a button</button>
+      <a href="https://mantine.dev" target="_blank" rel="noreferrer">
+        Link
+      </a>
     </MantineProvider>
   );
 }
