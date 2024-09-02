@@ -1,4 +1,5 @@
 import '@mantine/core/styles.css';
+
 import React, { useEffect } from 'react';
 import { addons } from '@storybook/preview-api';
 import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
@@ -16,7 +17,7 @@ function ColorSchemeWrapper({ children }: { children: React.ReactNode }) {
     return () => channel.off(DARK_MODE_EVENT_NAME, handleColorScheme);
   }, [channel]);
 
-  return <>{children}</>;
+  return children;
 }
 
 export const decorators = [
