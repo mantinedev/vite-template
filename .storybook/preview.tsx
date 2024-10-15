@@ -11,7 +11,7 @@ const channel = addons.getChannel();
 export const parameters = {
   layout: 'fullscreen',
   options: {
-    showPanel: true,
+    showPanel: false,
   },
 };
 
