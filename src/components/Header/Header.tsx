@@ -3,11 +3,9 @@ import {
   IconChevronDown,
   IconLogs,
   IconLogout,
-  IconPlayerPause,
   IconSettings,
   IconStar,
-  IconSwitchHorizontal,
-  IconTrash,
+  IconSwitchHorizontal
 } from '@tabler/icons-react';
 import cx from 'clsx';
 import {
@@ -32,11 +30,30 @@ const user = {
 };
 
 const tabs = [
-  'Parts',
-  'Tools',
-  'Detailing',
-  'Cleaning',
-  'F & I'
+    {
+        tabName: 'PARTS',
+        tabLink: null
+    },
+    {
+        tabName: 'TOOLS',
+        tabLink: 'https://g2stobeq.ca/digital-catalogue/'
+    },
+    {
+        tabName: "DETAILER'S DEPOT",
+        tabLink: null
+    },
+    {
+        tabName: 'CLEANING SUPPLIES',
+        tabLink: null
+    },
+    {
+        tabName: 'F & I DEPT.',
+        tabLink: null
+    },
+    {
+        tabName: 'ABOUT US',
+        tabLink: null
+    }
 ];
 
 export function Header() {
@@ -45,8 +62,8 @@ export function Header() {
   const [userMenuOpened, setUserMenuOpened] = useState(false);
 
   const items = tabs.map((tab) => (
-    <Tabs.Tab value={tab} key={tab}>
-      {tab}
+    <Tabs.Tab value={tab.tabName} key={tab.tabName} >
+      {tab.tabName}
     </Tabs.Tab>
   ));
 
