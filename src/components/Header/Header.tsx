@@ -20,7 +20,6 @@ import {
   Group,
   Menu,
   NavLink,
-  Tabs,
   Text,
   UnstyledButton,
   useMantineTheme,
@@ -44,7 +43,10 @@ export function Header() {
     <div className={classes.header}>
       <Container className={classes.mainSection} size="md">
         <Group justify="space-between">
-          <img src={MocLogo} />
+
+          <a href="/">
+            <img src={MocLogo} />
+          </a>
 
           <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
 
