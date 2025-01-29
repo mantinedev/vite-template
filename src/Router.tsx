@@ -6,6 +6,7 @@ import { PartsPage } from './pages/Parts.page';
 import { ToolsPage } from './pages/Tools.page';
 import { AboutUsPage } from './pages/AboutUs.page';
 import { FandIPage } from './pages/f_i.page';
+import { LoginPage } from './pages/Login.page';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: '/cleaning',
     element: <CleaningSuppliesPage />,
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
   },
   {
     path: '/detailers',
