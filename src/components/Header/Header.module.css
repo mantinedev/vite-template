@@ -18,26 +18,23 @@
     &:hover {
       background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
     }
-  
-    /* @media (max-width: $mantine-breakpoint-xs) {
-      display: none;
-    } */
   }
   
   .userActive {
     background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
   }
   
-  .tabsList {
-    &::before {
-      display: none;
-    }
-  }
-
-  .headerNavLink {
-    width: 10%;
-  }
+  .link {
+    display: block;
+    line-height: 1;
+    padding: 8px 12px;
+    border-radius: var(--mantine-radius-sm);
+    text-decoration: none;
+    color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+    font-size: var(--mantine-font-size-sm);
+    font-weight: 500;
   
-  .mantine-NavLink-root {
-    width: 10% !important;
+    @mixin hover {
+      background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+    }
   }

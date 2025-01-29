@@ -7,39 +7,68 @@ import { ToolsPage } from './pages/Tools.page';
 import { AboutUsPage } from './pages/AboutUs.page';
 import { FandIPage } from './pages/f_i.page';
 import { LoginPage } from './pages/Login.page';
+import { Header } from './components/Header/Header';
+import { WithHeaderAndFooter } from './utils/WithHeaderAndFooter';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage />,
+    element: <>
+    <Header />
+    <HomePage />
+    </>
   },
   {
     path: '/cleaning',
-    element: <CleaningSuppliesPage />,
+    element: 
+    <>
+      <Header />
+      <CleaningSuppliesPage />
+    </>
   },
   {
     path: '/login',
-    element: <LoginPage />,
+    element: <LoginPage />
   },
   {
     path: '/detailers',
-    element: <DetailersDepotPage />,
+    element: 
+    <>
+      <Header />
+      <DetailersDepotPage />
+    </>,
   },
   {
     path: '/f_and_i',
-    element: <FandIPage />,
+    element: 
+    <>
+      <Header />
+      <FandIPage />
+    </>,
   },
   {
     path: '/parts',
-    element: <PartsPage />,
+    element: 
+    <>
+      <Header />
+      <PartsPage />
+    </>,
   },
   {
     path: '/tools',
-    element: <ToolsPage />,
+    element: 
+    <>
+      <Header />
+      <ToolsPage />
+    </>,
   },
   {
     path: '/about',
-    element: <AboutUsPage />,
+    element: 
+    <>
+      <Header />
+      <AboutUsPage />
+    </>,
   },
 ]);
 
