@@ -120,7 +120,7 @@ export function Header() {
         </Group>
       </Container>
       <Container>
-        <Group ml={50} gap={5} className={classes.links} visibleFrom="sm">
+        <Group gap='md' className={classes.links} visibleFrom="sm">
           {items}
         </Group>
       </Container>
