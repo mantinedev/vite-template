@@ -23,6 +23,7 @@
     "@mantine/core": "7.16.1",
     "@mantine/hooks": "7.16.1",
     "@tabler/icons-react": "^3.29.0",
+    "firebase": "^11.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.3",
