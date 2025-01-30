@@ -9,6 +9,7 @@ import { FandIPage } from './pages/f_i.page';
 import { LoginPage } from './pages/Login.page';
 import { Header } from './components/Header/Header';
 import { WithHeaderAndFooter } from './utils/WithHeaderAndFooter';
+import { useMantineColorScheme } from '@mantine/core';
 
 const router = createBrowserRouter([
   {
@@ -73,5 +74,8 @@ const router = createBrowserRouter([
 ]);
 
 export function Router() {
+  const { setColorScheme } = useMantineColorScheme();
+  setColorScheme('dark');
+  
   return <RouterProvider router={router} />;
 }

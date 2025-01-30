@@ -1,12 +1,10 @@
-// import { FeaturedItems } from '@/components/FeaturedItems/FeaturedItems';
-import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
+import { FeaturedItems } from '@/components/FeaturedItems/FeaturedItems';
 import { Header } from '../components/Header/Header';
 
 export function HomePage() {
   return (
     <>
-      <ColorSchemeToggle />
-      {/* <FeaturedItems /> */}
+      <FeaturedItems />
     </>
   );
 }
