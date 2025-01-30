@@ -1,94 +1,105 @@
 import { Carousel } from '@mantine/carousel';
-import { Button, Paper, Text, Title, useMantineTheme } from '@mantine/core';
+import { Image, Text, Title, useMantineTheme, Container, Card } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import classes from './FeaturedItems.module.css';
 
-interface CardProps {
+interface FeaturedCardProps {
   image: string;
   title: string;
-  category: string;
+  price: string;
 }
 
-function Card({ image, title, category }: CardProps) {
+function FeatureCard({ image, title, price }: FeaturedCardProps) {
   return (
-    <Paper
-      shadow="md"
-      p="xl"
-      radius="md"
-      style={{ backgroundImage: `url(${image})` }}
-      className={classes.card}
-    >
-      <div>
-        <Text className={classes.category} size="xs">
-          {category}
-        </Text>
-        <Title order={3} className={classes.title}>
-          {title}
-        </Title>
-      </div>
-      <Button variant="white" color="dark">
-        Read article
-      </Button>
-    </Paper>
+    <Card
+    shadow="sm"
+    padding="md"
+    component="a"
+    // href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    target="_blank"
+  >
+    <Card.Section mt={3}>
+      <Image
+        src={image}
+        h={180}
+        fit="contain"
+      />
+    </Card.Section>
+
+    <Text fw={500} size="lg" mt="md">
+      {title}
+    </Text>
+
+    <Text mt="xs" size="sm">
+      ${price}
+    </Text>
+  </Card>
   );
 }
 
 const data = [
   {
     image:
-      'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Best forests to visit in North America',
-    category: 'nature',
+      'https://mocproducts.com/wp-content/uploads/2024/09/0603-150x150.png',
+    title: 'MP Oil',
+    price: '9.99',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1559494007-9f5847c49d94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Hawaii beaches review: better than you think',
-    category: 'beach',
+      'https://mocproducts.com/wp-content/uploads/2023/12/10901-1-150x150.png',
+    title: 'MP Spray',
+    price: '14.99',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1608481337062-4093bf3ed404?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Mountains at night: 12 best locations to enjoy the view',
-    category: 'nature',
+      'https://mocproducts.com/wp-content/uploads/2023/12/06011-1-150x150.png',
+    title: 'MP Brake Fluid',
+    price: '37.50',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Aurora in Norway: when to visit for best experience',
-    category: 'nature',
+      'https://mocproducts.com/wp-content/uploads/2024/07/10121-1.png',
+    title: 'Cleaning Solution',
+    price: '5.99',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Best places to visit this winter',
-    category: 'tourism',
+      'https://mocproducts.com/wp-content/uploads/2023/12/4290-400x400-1.png',
+    title: 'Cling Fluid',
+    price: '6.49',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1582721478779-0ae163c05a60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Active volcanos reviews: travel at your own risk',
-    category: 'nature',
+      'https://mocproducts.com/wp-content/uploads/2023/12/70074.png',
+    title: 'Cleaning Sponge',
+    price: '6.19',
   },
 ];
 
-export function FeaturedItems() {
+interface FeaturedItemProps {
+  title: string;
+}
+
+export function FeaturedItems({ title }: FeaturedItemProps) {
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const slides = data.map((item) => (
     <Carousel.Slide key={item.title}>
-      <Card {...item} />
+      <FeatureCard {...item} />
     </Carousel.Slide>
   ));
 
   return (
-    <Carousel
-      slideSize={{ base: '100%', sm: '50%' }}
-      slideGap={{ base: 2, sm: 'xl' }}
-      align="start"
-      slidesToScroll={mobile ? 1 : 2}
-    >
-      {slides}
-    </Carousel>
+    <Container>
+      <Title order={2} className={classes.title} mb='md'>{title}</Title>
+      <Carousel
+        slideSize={{ base: '50%', sm: '33.3333%' }}
+        slideGap={{ base: 3, sm: 'xl' }}
+        align="start"
+        slidesToScroll={mobile ? 2 : 3}
+      >
+        {slides}
+      </Carousel>
+    </Container>
   );
 }
