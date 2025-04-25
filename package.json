@@ -22,8 +22,8 @@
   "dependencies": {
     "@mantine/core": "7.17.5",
     "@mantine/hooks": "7.17.5",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-router-dom": "^7.4.0"
   },
   "devDependencies": {
