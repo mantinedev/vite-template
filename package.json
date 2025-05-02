@@ -20,8 +20,8 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
-    "@mantine/core": "7.17.5",
-    "@mantine/hooks": "7.17.5",
+    "@mantine/core": "7.17.7",
+    "@mantine/hooks": "7.17.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.4.0"
