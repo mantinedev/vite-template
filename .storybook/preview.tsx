@@ -12,6 +12,9 @@ export const parameters = {
   layout: 'fullscreen',
   options: {
     showPanel: false,
+    storySort: (a, b) => {
+      return a.title.localeCompare(b.title, undefined, { numeric: true });
+    },
   },
 };
 
