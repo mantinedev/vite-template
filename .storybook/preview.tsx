@@ -1,7 +1,6 @@
 import '@mantine/core/styles.css';
 
-import React, { useEffect } from 'react';
-import { ColorSchemeScript, MantineProvider, useMantineColorScheme } from '@mantine/core';
+import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import { theme } from '../src/theme';
 
 export const parameters = {
