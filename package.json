@@ -60,5 +60,5 @@
     "vite-tsconfig-paths": "^6.0.0",
     "vitest": "^4.0.0"
   },
-  "packageManager": "yarn@4.12.0"
+  "packageManager": "yarn@4.13.0"
 }
