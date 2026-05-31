@@ -20,8 +20,8 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
-    "@mantine/core": "9.2.1",
-    "@mantine/hooks": "9.2.1",
+    "@mantine/core": "9.2.2",
+    "@mantine/hooks": "9.2.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.9.4"
@@ -40,7 +40,7 @@
     "@vitejs/plugin-react": "^6.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^29.0.0",
-    "oxfmt": "^0.51.0",
+    "oxfmt": "^0.52.0",
     "oxlint": "^1.58.0",
     "postcss": "^8.5.6",
     "postcss-preset-mantine": "1.18.0",
