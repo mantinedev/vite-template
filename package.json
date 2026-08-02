@@ -39,7 +39,7 @@
     "@types/react-dom": "^19.2.1",
     "@vitejs/plugin-react": "^6.0.0",
     "identity-obj-proxy": "^3.0.0",
-    "jsdom": "^29.0.0",
+    "jsdom": "^30.0.0",
     "oxc-config-mantine": "^1.0.0",
     "oxfmt": "^0.60.0",
     "oxlint": "^1.70.0",
