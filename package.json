@@ -54,5 +54,5 @@
     "vite": "^8.0.0",
     "vitest": "^5.0.0"
   },
-  "packageManager": "yarn@4.18.0"
+  "packageManager": "yarn@4.18.1"
 }
