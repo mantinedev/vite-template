@@ -4,20 +4,23 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
+    "dev": "vp dev",
+    "build": "tsc && vp build",
+    "build:analyze": "vp build --mode analyze",
+    "preview": "vp preview",
     "typecheck": "tsc --noEmit",
     "lint": "npm run oxlint && npm run stylelint",
-    "oxlint": "oxlint -c oxlint.config.mjs .",
+    "oxlint": "vp lint",
     "stylelint": "stylelint '**/*.css' --cache",
-    "format:test": "oxfmt -c oxfmt.config.mjs --check \"**/*.{ts,tsx}\"",
-    "format:write": "oxfmt -c oxfmt.config.mjs --write \"**/*.{ts,tsx}\"",
-    "vitest": "vitest run",
-    "vitest:watch": "vitest",
-    "test": "npm run typecheck && npm run format:test && npm run lint && npm run vitest && npm run build",
+    "format:test": "vp fmt --check",
+    "format:write": "vp fmt",
+    "vitest": "vp test run",
+    "vitest:watch": "vp test",
+    "test": "npm run check && npm run stylelint && npm run vitest && npm run build",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build"
+    "storybook:build": "storybook build",
+    "check": "vp check",
+    "check:fix": "vp check --fix"
   },
   "dependencies": {
     "@mantine/core": "9.6.2",
@@ -41,18 +44,22 @@
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^30.0.0",
     "oxc-config-mantine": "^1.0.0",
-    "oxfmt": "^0.70.0",
-    "oxlint": "^1.70.0",
     "postcss": "^8.5.6",
     "postcss-preset-mantine": "1.18.0",
     "postcss-simple-vars": "^7.0.1",
     "prop-types": "^15.8.1",
+    "rollup-plugin-visualizer": "^7.1.1",
     "storybook": "^10.0.0",
     "stylelint": "^17.0.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "typescript": "7.0.2",
-    "vite": "^8.0.0",
-    "vitest": "^5.0.0"
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
+  },
+  "resolutions": {
+    "vite": "npm:@voidzero-dev/vite-plus-core@1.0.0",
+    "vitest": "5.0.1"
   },
   "packageManager": "yarn@4.18.1"
 }
