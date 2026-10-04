@@ -15,7 +15,7 @@
     "format:test": "vp fmt --check",
     "format:write": "vp fmt",
     "vitest": "vp test run",
-    "vitest:watch": "vp test",
+    "vitest:watch": "vp test watch",
     "test": "npm run check && npm run stylelint && npm run vitest && npm run build",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
