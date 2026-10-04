@@ -1,9 +1,6 @@
 {
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
-  "oxc.lint.enable": true,
-  "oxc.configPath": "oxlint.config.mjs",
-  "oxc.fmt.configPath": "oxfmt.config.mjs",
   "eslint.enable": false,
   "[typescript]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
@@ -13,5 +10,17 @@
   },
   "[css]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "oxc.disableNestedConfig": true,
+  "oxc.fmt.disableNestedConfig": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "explicit"
   }
 }
