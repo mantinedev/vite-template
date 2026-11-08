@@ -1041,9 +1041,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/core@npm:9.7.4":
-  version: 9.7.4
-  resolution: "@mantine/core@npm:9.7.4"
+"@mantine/core@npm:9.7.5":
+  version: 9.7.5
+  resolution: "@mantine/core@npm:9.7.5"
   dependencies:
     "@floating-ui/react": "npm:^0.27.20"
     clsx: "npm:^2.1.1"
@@ -1051,19 +1051,19 @@ __metadata:
     react-remove-scroll: "npm:^2.7.2"
     type-fest: "npm:^5.10.0"
   peerDependencies:
-    "@mantine/hooks": 9.7.4
+    "@mantine/hooks": 9.7.5
     react: ^19.2.0
     react-dom: ^19.2.0
-  checksum: 10c0/63537641981488741d2d403bd77c6ef4b8d6ee0780eed11e2691a6ec6d663803c00e90ba89e78f16abb3248e388c51bd08af34187bfe721d2aa383f23654989e
+  checksum: 10c0/221932c1d4d6b8cf8c4a2855e62185ba0942c4b80f243ddd4b3af64c98d043d8fb5e2552b98c7993e13eaf7773ec01bfbd44b685cc448d9459394892ade9e39d
   languageName: node
   linkType: hard
 
-"@mantine/hooks@npm:9.7.4":
-  version: 9.7.4
-  resolution: "@mantine/hooks@npm:9.7.4"
+"@mantine/hooks@npm:9.7.5":
+  version: 9.7.5
+  resolution: "@mantine/hooks@npm:9.7.5"
   peerDependencies:
     react: ^19.2.0
-  checksum: 10c0/14c5c9d5d4ce6af69cf837502749bdd23694e62b091e811d9198107bec83310c350231079c1f26964eebe6ddb8345c2ef365ed1dd546e69219187b9ed75131ee
+  checksum: 10c0/aa42d76547f5c405eccffb25e0112d143064f3c1d8739a4389bc0c751adc2992c28ee4537c4582b4a673b983f893d9f434fe22fc0352ba269963d43428483caf
   languageName: node
   linkType: hard
 
@@ -2270,14 +2270,14 @@ __metadata:
   linkType: hard
 
 "@vitejs/plugin-react@npm:^6.0.0":
-  version: 6.1.2
-  resolution: "@vitejs/plugin-react@npm:6.1.2"
+  version: 6.2.1
+  resolution: "@vitejs/plugin-react@npm:6.2.1"
   dependencies:
     "@rolldown/pluginutils": "npm:^1.0.1"
   peerDependencies:
-    "@rolldown/plugin-babel": ^0.1.7 || ^0.2.0
+    "@rolldown/plugin-babel": ^0.1.7 || ^0.2.0 || ^0.3.0
     babel-plugin-react-compiler: ^1.0.0
-    oxc-transform-react: ^0.152.0
+    oxc-transform-react: ">=0.152.0 <0.157.0"
     vite: ^8.0.0
   peerDependenciesMeta:
     "@rolldown/plugin-babel":
@@ -2286,7 +2286,7 @@ __metadata:
       optional: true
     oxc-transform-react:
       optional: true
-  checksum: 10c0/5c49e9098455e40662c60e7e3daf81088f8f3dc94dbd55746c310fc08a47962321c432dab202d5c240c91bf951c6a62ea64784b183e7ed47e6f9378d6e00e565
+  checksum: 10c0/b591b19ff2a9909f57cb2d6d4a401f11242cbe9bd2e1647ab7d55f7f66c9a674f1c236c3931c3a0de14e1bc473523d2d6064a48ef57679bbacc2ef06bc4f7961
   languageName: node
   linkType: hard
 
@@ -4492,8 +4492,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mantine-vite-template@workspace:."
   dependencies:
-    "@mantine/core": "npm:9.7.4"
-    "@mantine/hooks": "npm:9.7.4"
+    "@mantine/core": "npm:9.7.5"
+    "@mantine/hooks": "npm:9.7.5"
     "@storybook/addon-themes": "npm:^10.0.0"
     "@storybook/react": "npm:^10.0.0"
     "@storybook/react-vite": "npm:^10.0.0"
@@ -5749,8 +5749,8 @@ __metadata:
   linkType: hard
 
 "rollup-plugin-visualizer@npm:^7.1.1":
-  version: 7.1.1
-  resolution: "rollup-plugin-visualizer@npm:7.1.1"
+  version: 7.1.2
+  resolution: "rollup-plugin-visualizer@npm:7.1.2"
   dependencies:
     open: "npm:^11.0.0"
     picomatch: "npm:^4.0.5"
@@ -5766,7 +5766,7 @@ __metadata:
       optional: true
   bin:
     rollup-plugin-visualizer: dist/bin/cli.js
-  checksum: 10c0/ac740fb4e2e06b9ff7ac42af8c9af12d9d07ac1e45eaf0c1c3f5b23548cc07e8bdf66690a5c3d0229e0e145387566f160517db882fa89b621275b974f575abc6
+  checksum: 10c0/47b106de57bb00557a97fd3c63d7b4c32f6b27a1fd7528a9a44f87c9e95da85fba9a1681f8eec8a8365bbb8752660dcb8c5701567cf16cb0115e34ef36fbd306
   languageName: node
   linkType: hard
 
