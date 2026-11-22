@@ -888,9 +888,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/core@npm:9.8.0":
-  version: 9.8.0
-  resolution: "@mantine/core@npm:9.8.0"
+"@mantine/core@npm:9.8.1":
+  version: 9.8.1
+  resolution: "@mantine/core@npm:9.8.1"
   dependencies:
     "@floating-ui/react": "npm:^0.27.20"
     clsx: "npm:^2.1.1"
@@ -898,19 +898,19 @@ __metadata:
     react-remove-scroll: "npm:^2.7.2"
     type-fest: "npm:^5.10.0"
   peerDependencies:
-    "@mantine/hooks": 9.8.0
+    "@mantine/hooks": 9.8.1
     react: ^19.2.0
     react-dom: ^19.2.0
-  checksum: 10c0/3f7738bd71df2e40354d589fb389e1886d7198e5d9302db31ac1f084e911e32b4facbd5f35e75a15241bcea242dcea5b0f99ea5a00586353d13f9423c012795d
+  checksum: 10c0/5e3a51841d7c1adad7f6e63897e4541d141a7bb794a0b5b8c7b74479b175a814d25ddc5371e43934684635469764fcf4a63a6e3f959ebf8ef5d26bbc3eea880e
   languageName: node
   linkType: hard
 
-"@mantine/hooks@npm:9.8.0":
-  version: 9.8.0
-  resolution: "@mantine/hooks@npm:9.8.0"
+"@mantine/hooks@npm:9.8.1":
+  version: 9.8.1
+  resolution: "@mantine/hooks@npm:9.8.1"
   peerDependencies:
     react: ^19.2.0
-  checksum: 10c0/ba53b359c0564e3bf2c6e3506b538b569620f7459c806d7853a821bb7718594e3a27e1a62e1c35a21f1fe1b33a1c5c77d5604146578cf99eec405b61b29eded4
+  checksum: 10c0/233bb8856c25617f880d1eb1754105accb8377d2bc31cdb1bc9b181c5ce5c7c9c815630e9e8ec082697c6d2444ebb6c022ea1a0cce1fc97fbf674e535bba4e8c
   languageName: node
   linkType: hard
 
@@ -1795,11 +1795,11 @@ __metadata:
   linkType: hard
 
 "@testing-library/user-event@npm:^14.6.1, @testing-library/user-event@npm:^14.6.3, @testing-library/user-event@npm:^14.6.6":
-  version: 14.6.10
-  resolution: "@testing-library/user-event@npm:14.6.10"
+  version: 14.6.13
+  resolution: "@testing-library/user-event@npm:14.6.13"
   peerDependencies:
     "@testing-library/dom": ">=7.21.4"
-  checksum: 10c0/abf7caf8c8151137f356889ef987db43eee8fab2897d95f33b00ec490aef529e5e8418f118ca10d9e442e0433bf4a7012b75c7b41f68cddb61a135854f3b7360
+  checksum: 10c0/29cb1c17275ac8b0be3800fbcbcfd3b87c2fc7134aa91df4dc404e3962c4204e720c2286d654d15669eb9e0ee9428a9e246e162149ef9704ea6082b5e303ba85
   languageName: node
   linkType: hard
 
@@ -3657,8 +3657,8 @@ __metadata:
   linkType: hard
 
 "jsdom@npm:^31.0.0":
-  version: 31.0.0
-  resolution: "jsdom@npm:31.0.0"
+  version: 31.0.1
+  resolution: "jsdom@npm:31.0.1"
   dependencies:
     "@exodus/bytes": "npm:^1.16.0"
     bcp-47: "npm:^2.1.2"
@@ -3683,7 +3683,7 @@ __metadata:
   peerDependenciesMeta:
     "@napi-rs/canvas":
       optional: true
-  checksum: 10c0/e7240d72bfd6aab3e06ef2bcbd9656e39011707958d57b30c25caf840503a433ba56ba384f43e07938125f49e835f679856db58a9f762496a1811ec6ab580740
+  checksum: 10c0/e0f5567543401f2897984682a4139e42b8190fe8ed3f5d53f7e391333cb98b553870018685dbea5eb98549649ac8d5980800a774729a19aabca6fa0fd2b5f83d
   languageName: node
   linkType: hard
 
@@ -3948,8 +3948,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mantine-vite-template@workspace:."
   dependencies:
-    "@mantine/core": "npm:9.8.0"
-    "@mantine/hooks": "npm:9.8.0"
+    "@mantine/core": "npm:9.8.1"
+    "@mantine/hooks": "npm:9.8.1"
     "@storybook/addon-themes": "npm:^10.0.0"
     "@storybook/react": "npm:^10.0.0"
     "@storybook/react-vite": "npm:^10.0.0"
@@ -4782,13 +4782,13 @@ __metadata:
   linkType: hard
 
 "postcss@npm:^8.5.31, postcss@npm:^8.5.6":
-  version: 8.5.32
-  resolution: "postcss@npm:8.5.32"
+  version: 8.5.33
+  resolution: "postcss@npm:8.5.33"
   dependencies:
     nanoid: "npm:^3.3.20"
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.2"
-  checksum: 10c0/5fa6cad84e277c2ced965dc7e8e7c0b8d7e5b76a6835591b57a43fde46e671d0c8428d365e9141c080abaae5441d495ed77ffd7472c5bd41d6c2154bd03c01d7
+  checksum: 10c0/8711c5ad32a798813ae52dd51024881915ecc6171030f9cc1d3766d1969da20ade4cf71a645d7e54668cb45cb9622eac938dc1ce91fe1f9a0fa5f0bc8cbaa05a
   languageName: node
   linkType: hard
 
@@ -4943,20 +4943,20 @@ __metadata:
   linkType: hard
 
 "react-router-dom@npm:^7.9.4":
-  version: 7.18.5
-  resolution: "react-router-dom@npm:7.18.5"
+  version: 7.18.6
+  resolution: "react-router-dom@npm:7.18.6"
   dependencies:
-    react-router: "npm:7.18.5"
+    react-router: "npm:7.18.6"
   peerDependencies:
     react: ">=18"
     react-dom: ">=18"
-  checksum: 10c0/9e19ccb3fa061d86ad90eb906657cab6b2e4313b4eb02882f7515493c3d61c978a383ee0954854f2a9238ac013bdd03c526a5de14819c8ecaae62b5280774030
+  checksum: 10c0/6a564a97e4bbd5278673c7fa4fd8c66722abecc783bd57fd41a3bde7585b3312ead7cb31ba5cf8fc6e0e5989791e3c01ab40f7d92c96706db48559983871a202
   languageName: node
   linkType: hard
 
-"react-router@npm:7.18.5":
-  version: 7.18.5
-  resolution: "react-router@npm:7.18.5"
+"react-router@npm:7.18.6":
+  version: 7.18.6
+  resolution: "react-router@npm:7.18.6"
   dependencies:
     cookie: "npm:^1.0.1"
     set-cookie-parser: "npm:^2.6.0"
@@ -4966,7 +4966,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: 10c0/dbed9b4d0019873615028e2fe7bf7782ab4f41d9f287595b9a82f4a6d619dc5d3b88449fb3e717282f9f558312f29f88325372a7bb67355472703291607f9280
+  checksum: 10c0/1227a7fc566f47799a2f157213e07dcafff584b08454ec46c74ff05babe3c2adf10c25701ce546141be1b328675b658312af3ae6dcca5c551ee9a5c88732067c
   languageName: node
   linkType: hard
 
