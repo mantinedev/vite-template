@@ -32,10 +32,11 @@ It automatically switches to the Node.js version pinned in `.node-version` and l
 - `check:fix` – same as `check`, fixes formatting and auto-fixable lint errors
 - `typecheck` – checks TypeScript types
 - `lint` – runs oxlint and stylelint
+- `knip` – checks for unused files, exports and dependencies
 - `format:test` – checks files with oxfmt
 - `vitest` – runs vitest tests
 - `vitest:watch` – starts vitest watch
-- `test` – runs `check`, `stylelint`, `vitest` and `build` scripts
+- `test` – runs `check`, `stylelint`, `knip`, `vitest` and `build` scripts
 
 ### Other scripts
 
